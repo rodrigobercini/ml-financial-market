@@ -5,13 +5,11 @@ data = pd.read_csv(r'..\ml-financial-market\data\external\stock_dataframe.csv')
 
 df = data[['close', 'volume']]
 
-
 def column_shifter(n_shift, df, column):
     for i in range(1, n_shift):
         df[f'{column}_minus{i}'] = df[column].shift(i)
 
-for column in ['close', 'volume']:
-    column_shifter(28, df, column)
+for column in ['close', 'volume']: column_shifter(28, df, column)
 
 df.dropna(inplace=True)
 
@@ -20,13 +18,7 @@ df['Rise'] = 1
 periods_ahead = 24
 positive_variation = 1.02
 
-for i in range(0,len(df)-periods_ahead):
-    for j in range(1,periods_ahead):
-        if df['close'].iloc[i]/df['close'].iloc[i+j] > positive_variation:
-            df['Rise'].iloc[i] = 1
-            break
-        else:
-            df['Rise'].iloc[i] = 0
+df['Rise']  = (df['close'].iloc[::-1].rolling(periods_ahead).max() / df['close']).gt(positive_variation).astype(int)
 
 # We don't know if the last records rose or not, so we will remove them from the dataset
 df = df.iloc[:-periods_ahead]
