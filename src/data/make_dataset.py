@@ -7,5 +7,5 @@ def make_dataset():
     petr = Ticker(ticker)
     df = petr.history(period='60d',  interval = "5m")
     df.reset_index(inplace=True)
-    df.to_csv(r"..\ml-financial-market\ml-financial-market\data\external\stock_dataframe.csv")
+    df.to_csv(r"..\ml-financial-market\data\external\stock_dataframe.csv")
 make_dataset()

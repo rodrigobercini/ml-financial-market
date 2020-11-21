@@ -3,6 +3,7 @@ import pandas as pd
 # Feature engineering
 data = pd.read_csv(r'..\ml-financial-market\data\external\stock_dataframe.csv')
 
+data.index = data.date
 df = data[['close', 'volume']]
 
 def column_shifter(n_shift, df, column):
