@@ -8,7 +8,7 @@ df = pd.read_csv(r'..\ml-financial-market\data\interim\interim.csv')
 
 X = df.drop(['Rise','date'], axis=1)
 y = df['Rise']
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3, random_state=1949)
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2, random_state=1949)
 
 # Scaling data
 scaler = MinMaxScaler()

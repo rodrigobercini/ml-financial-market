@@ -12,6 +12,7 @@ early_stop = EarlyStopping(monitor='val_loss', mode='auto', verbose=1, patience=
 
 # Building the model
 model = Sequential()
+model.add(Dense(units=56,activation='relu'))
 model.add(Dense(units=28,activation='relu'))
 model.add(Dense(units=14,activation='relu'))
 model.add(Dense(units=7,activation='relu'))
