@@ -1,4 +1,4 @@
-Machine Learning Applied to the Financial Market
+Machine Learning model for Stock Market Prediction
 ==============================
 
 This repository contains a Machine Learning model to predict stock market movements.
