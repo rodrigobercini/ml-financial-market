@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from tensorflow import keras
+
 def load_data():
 	model = keras.models.load_model(r'..\ml-financial-market\models')
 	df = pd.read_csv(r'..\ml-financial-market\data\interim\interim_for_portfolio.csv')
@@ -53,7 +54,12 @@ def simulate(model,df,scaled_portfolio, positive_variation):
 
 	portfolio['Total$'] = portfolio['stocks_owned'] * portfolio['close'] + portfolio['bank']
 	portfolio.to_csv(r'..\ml-financial-market\data\portfolio\final_portfolio.csv')
+	return portfolio
+
 
 def portfolio_simulation(positive_variation):
 	model,df,scaled_portfolio = load_data()
-	simulate(model,df,scaled_portfolio, positive_variation = 1.02)
+	return simulate(model,df,scaled_portfolio, positive_variation)
+	
+if __name__ == '__main__':
+	portfolio_simulation(positive_variation=1.02)

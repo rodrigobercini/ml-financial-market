@@ -37,4 +37,5 @@ def scale_features():
     df, X_train, X_test, y_train, y_test, df_portfolio = scale_data(df, df_portfolio)
     save_data(df, X_train, X_test, y_train, y_test, df_portfolio)
 
-scale_features()
+if __name__ == '__main__':
+    scale_features()

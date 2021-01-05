@@ -44,4 +44,5 @@ def train_model():
         model = train(X_train, y_train)
         save_model(model)
 
-train_model()
+if __name__ == '__main__':
+        train_model()
